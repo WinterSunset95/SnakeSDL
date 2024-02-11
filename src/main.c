@@ -4,44 +4,43 @@
 #include <SDL2/SDL.h>
 #include "structs.h"
 #include "init.h"
+#include "game.h"
+#include "snake.h"
 
 App app;
 
-struct cell snake[];
-
-void placeholderRender() {
-	SDL_RenderClear(app.renderer);
-	SDL_RenderPresent(app.renderer);
-}
+struct cell snake[GRID_SIZE];
+struct cell food = {5,5};
 
 int main(int argc, char *argv[]) {
-	initSdl();
+	initSdl(&app);
 
-	app.window = SDL_CreateWindow("Snake", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 600, 600, SDL_WINDOW_SHOWN);
-	if (!app.window) {
-		printf("Unable to create SDL window\n");
-		SDL_Quit();
-		exit(1);
-	}
+	snake[0].x = 2;
+	snake[0].y = 2;
+	snake[0].dir = RIGHT;
+	snake[0].isHead = 1;
+	snake[0].isFilled = 1;
 
-	app.renderer = SDL_CreateRenderer(app.window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-	if (!app.renderer) {
-		printf("Unable to create SDL renderer\n");
-		SDL_DestroyWindow(app.window);
-		SDL_Quit();
-		exit(1);
-	}
+	snake[1].x = 1;
+	snake[1].y = 2;
+	snake[1].dir = RIGHT;
+	snake[1].isFilled = 1;
 
-	SDL_SetRenderDrawColor(app.renderer, 100, 100, 100, 255);
 	while (1) {
 		SDL_Event e;
 		if (SDL_PollEvent(&e)) {
 			if (e.type == SDL_QUIT) {
 				break;
 			} else {
-				placeholderRender();
+				handleInput(&e, snake);
 			}
 		}
+		drawBox(&app);
+		updateSnake(snake);
+		moveSnake(snake);
+		checkCollision(&app, snake, &food);
+		drawSnake(&app, snake, food);
+		SDL_Delay(100);
 	}
 
 	return 0;

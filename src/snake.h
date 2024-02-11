@@ -1,4 +1,1 @@
-struct cell {
-	int x;
-	int y;
-};
+void drawSnake(App *app, struct cell snake[], struct cell food);
