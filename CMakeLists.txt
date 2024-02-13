@@ -1,6 +1,3 @@
 cmake_minimum_required(VERSION 3.10)
 project(SnakeSDL)
-find_package(SDL2 REQUIRED)
 file(GLOB_RECURSE SOURCES "src/*.c" "src/*.h" "src/**/*.c" "src/**/*.h")
-add_executable(snake ${SOURCES})
-target_link_libraries(snake SDL2::SDL2 SDL2_image)

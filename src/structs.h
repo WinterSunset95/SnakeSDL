@@ -36,6 +36,7 @@
 typedef struct {
 	int x, y;
 	int dir;
+	int render;
 } Snake;
 
 typedef struct {
