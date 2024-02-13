@@ -1,4 +1,6 @@
+cmake_minimum_required(VERSION 3.10)
 project(SnakeSDL)
 find_package(SDL2 REQUIRED)
-add_executable(snake src/structs.h src/main.c src/init.h src/init.c src/game/game.h src/game/game.c src/menu/menu.h src/menu/menu.c src/exit/exit.c src/exit/exit.h)
-target_link_libraries(snake SDL2::SDL2)
+file(GLOB_RECURSE SOURCES "src/*.c" "src/*.h" "src/**/*.c" "src/**/*.h")
+add_executable(snake ${SOURCES})
+target_link_libraries(snake SDL2::SDL2 SDL2_image)

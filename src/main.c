@@ -4,6 +4,7 @@
 #include "structs.h"
 #include "init.h"
 #include "menu/menu.h"
+#include "game/game.h"
 
 int main(int argc, char *argv[]) {
 
@@ -13,25 +14,15 @@ int main(int argc, char *argv[]) {
 	initSdl(&app);
 
 	while(1) {
-
-		SDL_Event event;
-		if(SDL_PollEvent(&event)) {
-			if (event.type == SDL_QUIT) {
-				break;
-			} else if (event.type == SDL_KEYDOWN) {
-				switch(event.key.keysym.sym) {
-					case SDLK_ESCAPE:
-						break;
-					default:
-						break;
-				}
-			}
+		prepareScene(&app);
+		handleInput(&app);
+		if(window == MENU_WINDOW) {
+			prepareMenu(&app);
+		} else if(window == SNAKE_WINDOW) {
+		} else if(window == GAME_OVER_WINDOW) {
 		}
-
+		presentScene(&app);
 		SDL_Delay(100);
-		drawMenu(&app);
-		drawWindow(&app);
-
 	}
 
 	closeSdl(&app);

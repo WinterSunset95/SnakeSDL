@@ -1,21 +1,26 @@
 #include "../structs.h"
-#include <SDL2/SDL_messagebox.h>
+#include "../init.h"
+#include <SDL2/SDL_rect.h>
+#include <SDL2/SDL_render.h>
+#include <SDL2/SDL_surface.h>
 
-void drawMenu(App *app) {
-	SDL_MessageBoxButtonData buttons[1] = {
-		{0, 0, "OK"}
-	};
-	SDL_MessageBoxColorScheme colorScheme = {
-		{ { 255, 0, 0 }, { 0, 255, 0 }, { 255, 255, 0 }, { 0, 0, 255 }, { 255, 255, 255 } }
-	};
+void prepareMenu(App *app) {
+	const char *menu = "src/assets/menu.bmp";
 
-	SDL_MessageBoxData data;
-	data.window = app->window;
-	data.title = "Snake";
-	data.message = "Welcome to Snake!";
-	data.numbuttons = 1;
-	data.buttons = buttons;
-	data.colorScheme = &colorScheme;
+	SDL_Surface *surface = SDL_LoadBMP(menu);
+	if(surface == NULL) {
+		SDL_Log("Unable to load menu.bmp: %s\n", SDL_GetError());
+		closeSdl(app);
+		exit(1);
+	}
 
-	SDL_ShowMessageBox(&data, NULL);
+	SDL_Texture *texture = SDL_CreateTextureFromSurface(app->renderer, surface);
+	if(texture == NULL) {
+		SDL_Log("Unable to create texture from surface: %s\n", SDL_GetError());
+		closeSdl(app);
+		exit(1);
+	}
+
+	SDL_Rect rect = {0, 0, SCREEN_WIDTH, SCREEN_HEIGHT};
+	SDL_RenderCopy(app->renderer, texture, NULL, &rect);
 }

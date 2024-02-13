@@ -1,2 +1,2 @@
 #include "../structs.h"
-void drawMenu(App *app);
+void prepareMenu(App *app);
