@@ -1,15 +1,18 @@
 #include "../structs.h"
 #include "../init.h"
 #include "../assets/apple.xpm"
+#include "../helpers/chars.h"
 #include <SDL2/SDL_error.h>
 #include <SDL2/SDL_log.h>
 #include <SDL2/SDL_rect.h>
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL_surface.h>
 #include <SDL2/SDL_image.h>
+#include <stdio.h>
 #include <stdlib.h>
 
-void prepareSnake(App *app, Snake *snake, Snake *apple, int *window) {
+void prepareSnake(App *app, Snake *snake, Snake *apple, int *window, int *score) {
+
 	// Check for collisions
 	// Snake head with itself
 	for (int i=4; i<GRID_SIZE; i++) {
@@ -27,6 +30,9 @@ void prepareSnake(App *app, Snake *snake, Snake *apple, int *window) {
 		// Move apple to random location
 		apple->x = rand() % GRID_X;
 		apple->y = rand() % GRID_Y;
+
+		// Increase score
+		*score += 10;
 
 		for (int i=0; i<GRID_SIZE; i++) {
 			if (!snake[i].render) {
@@ -93,4 +99,11 @@ void prepareSnake(App *app, Snake *snake, Snake *apple, int *window) {
 	SDL_FreeSurface(appleSurface);
 	SDL_DestroyTexture(appleTexture);
 
+}
+
+void prepareScoreScreen(App *app, int *score) {
+	char scoreStr[10];
+	sprintf(scoreStr, "%d", *score);
+	printString(app, "Score", SCORE_X+CELL_SIZE, CELL_SIZE, 1);
+	printString(app, scoreStr, SCORE_X+CELL_SIZE, CELL_SIZE*4, 2);
 }

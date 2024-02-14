@@ -14,6 +14,7 @@ int main(int argc, char *argv[]) {
 	Snake snake[GRID_SIZE];
 	Snake apple;
 	int window = MENU_WINDOW;
+	int score = 0;
 
 	// Initialize apple
 	apple.x = 5;
@@ -44,7 +45,8 @@ int main(int argc, char *argv[]) {
 		if(window == MENU_WINDOW) {
 			prepareMenu(&app);
 		} else if(window == SNAKE_WINDOW) {
-			prepareSnake(&app, snake, &apple, &window);
+			prepareSnake(&app, snake, &apple, &window, &score);
+			prepareScoreScreen(&app, &score);
 		} else if(window == GAME_OVER_WINDOW) {
 			prepareExitScreen(&app);
 		}

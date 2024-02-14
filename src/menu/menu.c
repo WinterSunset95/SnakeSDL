@@ -7,7 +7,6 @@
 #include <SDL2/SDL_image.h>
 
 void prepareMenu(App *app) {
-
 	SDL_Surface *surface = IMG_ReadXPMFromArray(menu_xpm);
 	if(surface == NULL) {
 		SDL_Log("Unable to load menu.bmp: %s\n", SDL_GetError());
