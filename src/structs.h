@@ -9,7 +9,7 @@
 #define GAME_OVER_WINDOW 2
 
 // For the screen dimensions
-#define SCREEN_WIDTH 640
+#define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
 
 // Snake dimensions
@@ -28,9 +28,11 @@
 #define LEFT 2
 #define RIGHT 3
 
-// The menu window
-#define MENU_WIDTH 40
-#define MENU_HEIGHT 600
+// The score window
+#define SCORE_X 600
+#define SCORE_Y 0
+#define SCORE_WIDTH 200
+#define SCORE_HEIGHT 600
 
 // The snake structure
 typedef struct {
