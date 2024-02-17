@@ -38,7 +38,10 @@ int main(int argc, char *argv[]) {
 
 	while(1) {
 		prepareScene(&app);
-		handleInput(&app, &window, snake);
+		window = handleInput(window, snake);
+		if(window == -1) {
+			break;
+		}
 		if(window == MENU_WINDOW) {
 			prepareMenu(&app);
 		} else if(window == SNAKE_WINDOW) {

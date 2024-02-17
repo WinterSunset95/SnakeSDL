@@ -1,2 +1,7 @@
+#ifndef GAME_H
+#define GAME_H
+
 #include "../structs.h"
-void handleInput(App *app, int *window, Snake *snake);
+int handleInput(int window, Snake snake[]);
+
+#endif

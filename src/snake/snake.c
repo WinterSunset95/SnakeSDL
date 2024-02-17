@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void prepareSnake(App *app, Snake *snake, Snake *apple, int *window, int *score) {
+int prepareSnake(App *app, Snake *snake, Snake *apple, int *window, int *score) {
 
 	// Check for collisions
 	// Snake head with itself
@@ -15,7 +15,7 @@ void prepareSnake(App *app, Snake *snake, Snake *apple, int *window, int *score)
 		}
 		if (snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
 			*window = GAME_OVER_WINDOW;
-			return;
+			return 0;
 		}
 	}
 	
@@ -38,7 +38,9 @@ void prepareSnake(App *app, Snake *snake, Snake *apple, int *window, int *score)
 	
 	// Snake movement
 	// Replace snake[n] with snake[n-1]
-	for (int i=GRID_SIZE; i>0; i--) {
+	// IT TOOK ME TWO FUCKING WEEKS TO REALIZE THAT THE LAST INDEX
+	// IS THE GRID_SIZE-1!! AAAAAHHHHHHHHHHHHHHHH
+	for (int i=GRID_SIZE-1; i>0; i--) {
 		if (snake[i].render) {
 			snake[i].x = snake[i-1].x;
 			snake[i].y = snake[i-1].y;
@@ -92,6 +94,8 @@ void prepareSnake(App *app, Snake *snake, Snake *apple, int *window, int *score)
 
 	SDL_FreeSurface(appleSurface);
 	SDL_DestroyTexture(appleTexture);
+
+	return 0;
 
 }
 
