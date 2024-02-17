@@ -1,13 +1,41 @@
-#include <SDL2/SDL.h>
 
 #ifndef STRUCTS_H
 #define STRUCTS_H
+
+#ifdef _WIN32
+#include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_log.h>
+#include <SDL_quit.h>
+#include <SDL_rect.h>
+#include <SDL_render.h>
+#include <SDL_stdinc.h>
+#include <SDL_surface.h>
+#include <SDL_video.h>
+#include <SDL_events.h>
+#include <SDL_timer.h>
+#include <SDL_keycode.h>
+#include <SDL_error.h>
+#else
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_log.h>
+#include <SDL2/SDL_quit.h>
+#include <SDL2/SDL_rect.h>
+#include <SDL2/SDL_render.h>
+#include <SDL2/SDL_stdinc.h>
+#include <SDL2/SDL_surface.h>
+#include <SDL2/SDL_video.h>
+#include <SDL2/SDL_events.h>
+#include <SDL2/SDL_timer.h>
+#include <SDL2/SDL_keycode.h>
+#include <SDL2/SDL_error.h>
+#endif
 
 // For the different windows
 #define SNAKE_WINDOW 0
 #define MENU_WINDOW 1
 #define GAME_OVER_WINDOW 2
-
 // For the screen dimensions
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600

@@ -1,6 +1,3 @@
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_events.h>
-#include <SDL2/SDL_timer.h>
 #include "structs.h"
 #include "init.h"
 #include "menu/menu.h"

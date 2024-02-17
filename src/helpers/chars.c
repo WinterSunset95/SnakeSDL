@@ -1,9 +1,5 @@
 #include "../structs.h"
 #include "chars.h"
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_rect.h>
-#include <SDL2/SDL_render.h>
-#include <SDL2/SDL_surface.h>
 #include <string.h>
 
 char *(*characters[]) = {
