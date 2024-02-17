@@ -2,12 +2,6 @@
 #include "../init.h"
 #include "../assets/apple.xpm"
 #include "../helpers/chars.h"
-#include <SDL2/SDL_error.h>
-#include <SDL2/SDL_log.h>
-#include <SDL2/SDL_rect.h>
-#include <SDL2/SDL_render.h>
-#include <SDL2/SDL_surface.h>
-#include <SDL2/SDL_image.h>
 #include <stdio.h>
 #include <stdlib.h>
 

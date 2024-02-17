@@ -2,9 +2,6 @@
 #include "../init.h"
 #include "../assets/exit.xpm"
 #include "exit.h"
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_render.h>
-#include <SDL2/SDL_surface.h>
 
 void prepareExitScreen(App *app) {
 	SDL_Surface *surface = IMG_ReadXPMFromArray(exit_xpm);

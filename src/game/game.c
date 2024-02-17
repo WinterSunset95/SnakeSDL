@@ -1,7 +1,5 @@
 #include "../structs.h"
 #include "../init.h"
-#include <SDL2/SDL_events.h>
-#include <SDL2/SDL_keycode.h>
 
 void handleInput(App *app, int *window, Snake *snake) {
 

@@ -1,10 +1,6 @@
 #include "../structs.h"
 #include "../init.h"
 #include "../assets/menu.xpm"
-#include <SDL2/SDL_rect.h>
-#include <SDL2/SDL_render.h>
-#include <SDL2/SDL_surface.h>
-#include <SDL2/SDL_image.h>
 
 void prepareMenu(App *app) {
 	SDL_Surface *surface = IMG_ReadXPMFromArray(menu_xpm);
