@@ -6,12 +6,6 @@
 
 void initSdl(App *app) {
 
-	if(IMG_Init(IMG_INIT_JPG) == 0) {
-		SDL_Log("IMG_Init failed: %s\n", IMG_GetError());
-		closeSdl(app);
-		exit(1);
-	}
-
 	if(SDL_Init(SDL_INIT_EVERYTHING) != 0) {
 		SDL_Log("Unable to initialize SDL: %s", SDL_GetError());
 		closeSdl(app);

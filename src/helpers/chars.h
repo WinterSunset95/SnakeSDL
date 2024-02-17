@@ -1,3 +1,6 @@
+#ifndef CHARS_H
+#define CHARS_H
+
 #include "../assets/characters/A.xpm"
 #include "../assets/characters/B.xpm"
 #include "../assets/characters/C.xpm"
@@ -37,3 +40,5 @@
 
 #include "../structs.h"
 int printString(App *app, char text[], int x, int y, int size);
+
+#endif
